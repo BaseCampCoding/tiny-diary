@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
@@ -7,6 +8,11 @@ public class Program {
     
     public static void main(String[] args) {
         JournalEntry entry = inputJournalEntry();
+        try {
+            JournalEntryRepository.save(entry);
+        } catch (IOException ex) {
+            System.out.println("Unable To Save File!");
+        }
     }
 
     private static JournalEntry inputJournalEntry() {
